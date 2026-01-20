@@ -48,13 +48,25 @@ export default function Navigation() {
                             </>
                         ) : (
                             <>
-                                <Link to="/#about" className="text-rose-800 hover:text-rose-900 font-medium transition-colors">
+                                <Link
+                                    to="/"
+                                    hash="about"
+                                    className="text-rose-800 hover:text-rose-900 font-medium transition-colors"
+                                >
                                     About
                                 </Link>
-                                <Link to="/#experience" className="text-rose-800 hover:text-rose-900 font-medium transition-colors">
+                                <Link
+                                    to="/"
+                                    hash="experience"
+                                    className="text-rose-800 hover:text-rose-900 font-medium transition-colors"
+                                >
                                     Experience
                                 </Link>
-                                <Link to="/#projects" className="text-rose-800 hover:text-rose-900 font-medium transition-colors">
+                                <Link
+                                    to="/"
+                                    hash="projects"
+                                    className="text-rose-800 hover:text-rose-900 font-medium transition-colors"
+                                >
                                     Projects
                                 </Link>
                             </>
