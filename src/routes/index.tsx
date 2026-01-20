@@ -7,20 +7,31 @@ export const Route = createFileRoute('/')({
 
 function HomePage() {
     return (
-        <div className="pt-20 bg-pink-50">
+        <div className="pt-8 bg-pink-50">
 
             {/* Hero Section */}
             <section className="min-h-screen flex items-center px-6 lg:px-20 py-20">
                 <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
-                    {/* Left: Unicorn Circle */}
+                    {/* Left: Unicorn Circle
                     <div className="flex justify-center">
                         <div className="w-96 h-96 rounded-full bg-pink-200 flex items-center justify-center">
                             <span className="text-9xl">🦄</span>
                         </div>
+                    </div> */}
+
+                    {/* Left: Chuu Circle */}
+                    <div className="flex justify-center">
+                        <div className="w-96 h-96 rounded-full bg-pink-200 flex items-center justify-center overflow-hidden border-8 border-white shadow-lg">
+                            <img
+                                src="/chuu.png"
+                                alt="Chuu"
+                                className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+                            />
+                        </div>
                     </div>
 
                     {/* Right: Info */}
-                    <div>
+                    <div className="lg:-mt-8">
                         <h1 className="text-7xl font-light text-rose-800 mb-6">
                             Shianne Liang
                         </h1>
