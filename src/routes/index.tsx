@@ -1,5 +1,7 @@
 // src/routes/index.tsx
 import { createFileRoute } from '@tanstack/react-router'
+import ExperienceCard from '../components/Experience'
+import ProjectCard from '../components/Project'
 
 export const Route = createFileRoute('/')({
     component: HomePage,
@@ -112,6 +114,11 @@ function HomePage() {
                 </div>
             </section>
 
+            {/*CHUUUUUUCHUUUCHUUU */}
+            <div className="flex justify-center">
+                <img src="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338" alt="Shianne Liang" className="rounded-2xl border border-pink-200 shadow-lg w-full max-w-2xl h-auto" />
+            </div>
+
             {/* Experience Section */}
             <section id="experience" className="min-h-screen flex items-center justify-center px-6 py-20">
                 <div className="max-w-5xl w-full">
@@ -135,8 +142,8 @@ function HomePage() {
                                 description="Built scalable web applications using modern technologies"
                             />
                             <ExperienceCard
-                                period="2019 - 2021"
-                                title="UI/UX Designer"
+                                period="2007 - 2021"
+                                title="silly baka"
                                 company="Digital Agency"
                                 description="Designed user interfaces and conducted user research"
                             />
@@ -154,22 +161,22 @@ function HomePage() {
                         <ProjectCard
                             title="Modern Workspace"
                             description="A beautiful web application with modern design and intuitive user experience"
-                            image="https://images.unsplash.com/photo-1593062096033-9a26b09da705?w=800&h=600&fit=crop"
+                            image="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338"
                         />
                         <ProjectCard
                             title="Mobile Design System"
                             description="Mobile-first responsive design system with reusable components"
-                            image="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop"
+                            image="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338"
                         />
                         <ProjectCard
                             title="E-commerce Platform"
                             description="Full-featured online shopping experience with seamless checkout"
-                            image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+                            image="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338"
                         />
                         <ProjectCard
                             title="Portfolio Website"
                             description="Personal portfolio showcasing creative work and design skills"
-                            image="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800&h=600&fit=crop"
+                            image="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338"
                         />
                     </div>
                 </div>
@@ -179,39 +186,23 @@ function HomePage() {
     )
 }
 
-function ExperienceCard({ period, title, company, description }: {
-    period: string
-    title: string
-    company: string
-    description: string
-}) {
-    return (
-        <div className="relative pl-20">
-            {/* Timeline dot */}
-            <div className="absolute left-3.5 top-2 w-5 h-5 rounded-full bg-rose-400 border-4 border-pink-50"></div>
+// function ExperienceCard({ period, title, company, description }: {
+//     period: string
+//     title: string
+//     company: string
+//     description: string
+// }) {
+//     return (
+//         <div className="relative pl-20">
+//             {/* Timeline dot */}
+//             <div className="absolute left-3.5 top-2 w-5 h-5 rounded-full bg-rose-400 border-4 border-pink-50"></div>
 
-            <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-pink-200 p-8">
-                <div className="text-rose-600 font-medium mb-2">{period}</div>
-                <h3 className="text-3xl font-medium text-rose-800 mb-1">{title}</h3>
-                <div className="text-xl text-rose-700 mb-4">{company}</div>
-                <p className="text-lg text-rose-800">{description}</p>
-            </div>
-        </div>
-    )
-}
-
-function ProjectCard({ title, description, image }: {
-    title: string
-    description: string
-    image: string
-}) {
-    return (
-        <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-pink-200 overflow-hidden hover:shadow-xl transition-shadow">
-            <img src={image} alt={title} className="w-full h-64 object-cover" />
-            <div className="p-8">
-                <h3 className="text-3xl font-medium text-rose-800 mb-3">{title}</h3>
-                <p className="text-lg text-rose-700">{description}</p>
-            </div>
-        </div>
-    )
-}
+//             <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-pink-200 p-8">
+//                 <div className="text-rose-600 font-medium mb-2">{period}</div>
+//                 <h3 className="text-3xl font-medium text-rose-800 mb-1">{title}</h3>
+//                 <div className="text-xl text-rose-700 mb-4">{company}</div>
+//                 <p className="text-lg text-rose-800">{description}</p>
+//             </div>
+//         </div>
+//     )
+// }
