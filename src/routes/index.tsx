@@ -73,15 +73,18 @@ function HomePage() {
                         <div className="grid grid-cols-3 gap-4">
                             <div className="bg-white/50 backdrop-blur-sm rounded-2xl border border-pink-200 p-6 text-center">
                                 <div className="text-4xl font-light text-rose-800 mb-2">10+</div>
-                                <div className="text-rose-700">Happiness</div>
+                                {/* <div className="text-rose-700">Happiness</div> */}
+                                <img src="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338" alt="Shianne Liang" className="rounded-2xl border border-pink-200 shadow-lg w-full max-w-2xl h-auto" />
                             </div>
                             <div className="bg-white/50 backdrop-blur-sm rounded-2xl border border-pink-200 p-6 text-center">
                                 <div className="text-4xl font-light text-rose-800 mb-2">18</div>
-                                <div className="text-rose-700">Years</div>
+                                {/* <div className="text-rose-700">Years</div> */}
+                                <img src="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338" alt="Shianne Liang" className="rounded-2xl border border-pink-200 shadow-lg w-full max-w-2xl h-auto" />
                             </div>
                             <div className="bg-white/50 backdrop-blur-sm rounded-2xl border border-pink-200 p-6 text-center">
                                 <div className="text-4xl font-light text-rose-800 mb-2">20+</div>
-                                <div className="text-rose-700">Days</div>
+                                {/* <div className="text-rose-700">Days</div> */}
+                                <img src="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338" alt="Shianne Liang" className="rounded-2xl border border-pink-200 shadow-lg w-full max-w-2xl h-auto" />
                             </div>
                         </div>
                     </div>
