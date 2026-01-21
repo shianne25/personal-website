@@ -22,7 +22,7 @@ function HomePage() {
                     </div> */}
 
                     {/* Left: Chuu Circle */}
-                    <div className="flex justify-center">
+                    <div className="flex justify-center -mt-32">
                         <div className="w-96 h-96 rounded-full bg-pink-200 flex items-center justify-center overflow-hidden border-8 border-white shadow-lg">
                             <img
                                 src="/chuu.png"
