@@ -5,10 +5,17 @@ import BookCard from '../components/Book'
 export const Route = createFileRoute('/books')({
     component: BooksPage,
 })
-
+interface Book {
+    title: string;
+    author: string;
+    category: string;
+    rating: number;
+    commentary: string;
+}
 function BooksPage() {
     // Step 2: Create the search "memory" (state)
     const [searchQuery, setSearchQuery] = useState('')
+    const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
     // Step 3: Move your books into an Array
     const allBooks = [
@@ -99,7 +106,7 @@ function BooksPage() {
                 </div>
 
                 {/* Step 6: Map through the filtered results */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                {/* <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
                     {filteredBooks.map((book, index) => (
                         <BookCard
                             key={index}
@@ -110,15 +117,60 @@ function BooksPage() {
                             commentary={book.commentary}
                         />
                     ))}
+                </div> */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                    {filteredBooks.map((book, index) => (
+                        <div key={index} onClick={() => setSelectedBook(book)} className="cursor-pointer">
+                            <BookCard {...book} />
+                        </div>
+                    ))}
                 </div>
 
-                {/* If no books match the search */}
-                {filteredBooks.length === 0 && (
-                    <p className="text-center text-rose-300 py-20 text-xl font-light">
-                        No books found matching "{searchQuery}"
-                    </p>
+                {selectedBook && (
+                    <div
+                        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-rose-900/20 backdrop-blur-md"
+                        onClick={() => setSelectedBook(null)} // Click outside to close
+                    >
+                        <div
+                            className="bg-white rounded-3xl p-10 max-w-lg w-full shadow-2xl border border-pink-100 relative animate-in fade-in zoom-in duration-300"
+                            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the card itself
+                        >
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setSelectedBook(null)}
+                                className="absolute top-6 right-6 text-rose-300 hover:text-rose-500"
+                            >
+                                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+
+                            <div className="space-y-4">
+                                <span className="bg-rose-100 text-rose-800 px-4 py-1 rounded-full text-sm font-medium">
+                                    {selectedBook.category}
+                                </span>
+                                <h2 className="text-4xl font-medium text-rose-800">{selectedBook.title}</h2>
+                                <p className="text-2xl text-rose-700">by {selectedBook.author}</p>
+
+                                <div className="py-6 border-t border-pink-50 mt-6">
+                                    <h4 className="text-sm uppercase tracking-widest text-rose-400 mb-3 font-bold">My Thoughts</h4>
+                                    <p className="text-xl text-rose-800 leading-relaxed italic">
+                                        "{selectedBook.commentary}"
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 )}
             </div>
+
+
+            {/* If no books match the search */}
+            {filteredBooks.length === 0 && (
+                <p className="text-center text-rose-300 py-20 text-xl font-light">
+                    No books found matching "{searchQuery}"
+                </p>
+            )}
         </div>
     )
 }
