@@ -67,15 +67,21 @@ function BooksPage() {
             <div className="max-w-6xl mx-auto">
                 <h1 className="text-6xl font-light text-rose-800 mb-16 text-center">Books</h1>
 
-                {/* Header Row: Bubble on Left, Search on Right */}
+                {/* Header Row*/}
                 <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+
+                    {/* Current Read */}
                     <div className="flex">
                         <div className="flex items-center gap-3 px-6 py-2 rounded-full border-2 border-rose-200 bg-white/50">
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
-                            <h3 className="text-xl font-medium text-rose-800">Current Read: THE MONGOLS</h3>
+                            <h3 className="text-xl font-medium text-rose-800">
+                                <span className="font-bold">Current Read: </span>
+                                <span> Genghis Khan and the Making of the Modern World </span>
+                            </h3>
                         </div>
                     </div>
 
+                    {/* Search Bar Section */}
                     {searchQuery && (
                         <button
                             onClick={() => setSearchQuery('')}

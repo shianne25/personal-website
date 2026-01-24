@@ -33,16 +33,16 @@ function HomePage() {
                     </div>
 
                     {/* Right: Info */}
-                    <div className="lg:-mt-8">
+                    <div className="lg:-mt-2">
                         <h1 className="text-7xl font-light text-rose-800 mb-6">
                             Shianne Liang
                         </h1>
-                        <p className="text-3xl text-rose-700 mb-10 font-light">
-                            Creating beautiful digital experiences
+                        <p className="text-3xl text-rose-700 mb-6 font-light">
+                            Be epic, always.
                         </p>
 
                         {/* Social Icons */}
-                        <div className="flex gap-4 mb-12">
+                        <div className="flex gap-4 mb-6">
                             <a href="https://www.linkedin.com/in/shianne-liang-696663254/"
                                 target="_blank" rel="noopener noreferrer"
                                 className="w-16 h-16 rounded-full bg-pink-200 flex items-center justify-center hover:bg-pink-300 transition-colors">
@@ -63,10 +63,10 @@ function HomePage() {
                         </div>
 
                         {/* Traits */}
-                        <div className="space-y-3 mb-12">
-                            <p className="text-2xl text-rose-800">Designer & Developer</p>
-                            <p className="text-2xl text-rose-800">Creative Thinker</p>
-                            <p className="text-2xl text-rose-800">Problem Solver</p>
+                        <div className="space-y-3 mb-10">
+                            <p className="text-2xl text-rose-800">syde @ uwaterloo</p>
+                            <p className="text-2xl text-rose-800">tpm + fullstack dev</p>
+                            <p className="text-2xl text-rose-800">kewpie mayo enthusiast</p>
                         </div>
 
                         {/* Stats */}
@@ -104,14 +104,10 @@ function HomePage() {
                     <h2 className="text-6xl font-light text-rose-800 mb-16 text-center">About</h2>
                     <div className="bg-white/70 backdrop-blur-sm rounded-3xl border border-pink-200 p-12">
                         <p className="text-2xl text-rose-800 leading-relaxed mb-8">
-                            Hello! I'm Shianne, a passionate designer and developer who loves creating beautiful
-                            and functional digital experiences. With a keen eye for aesthetics and a strong
-                            technical foundation, I bring ideas to life through code and design.
+                            Hello! I'm Shianne.
                         </p>
                         <p className="text-2xl text-rose-800 leading-relaxed">
-                            When I'm not coding or designing, you can find me exploring new technologies,
-                            reading books, or working on creative side projects. I believe in the power of
-                            continuous learning and always strive to push the boundaries of what's possible.
+                            Gonna figure out.
                         </p>
                     </div>
                 </div>
@@ -162,24 +158,16 @@ function HomePage() {
 
                     <div className="grid md:grid-cols-2 gap-8">
                         <ProjectCard
-                            title="Modern Workspace"
-                            description="A beautiful web application with modern design and intuitive user experience"
-                            image="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338"
+                            title="Our Next Move"
+                            description="Dance workshop connecting vulnerable youth to community resources such as 360Kids, CICS, and Routes Newmarket."
+                            image="onm.png"
+                            link="https://www.instagram.com/ournextmove2025?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                         />
                         <ProjectCard
-                            title="Mobile Design System"
-                            description="Mobile-first responsive design system with reusable components"
+                            title="Exploding Kittens Digital"
+                            description="A digital adaptation of the popular card game, developed using Java and GUI frameworks."
                             image="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338"
-                        />
-                        <ProjectCard
-                            title="E-commerce Platform"
-                            description="Full-featured online shopping experience with seamless checkout"
-                            image="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338"
-                        />
-                        <ProjectCard
-                            title="Portfolio Website"
-                            description="Personal portfolio showcasing creative work and design skills"
-                            image="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338"
+                            link='https://github.com/shianne25/Exploding-Kittens-Project'
                         />
                     </div>
                 </div>
