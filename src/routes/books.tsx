@@ -20,11 +20,11 @@ function BooksPage() {
     // Step 3: Move your books into an Array
     const allBooks = [
         {
-            title: "The Design of Everyday Things",
-            author: "Don Norman",
-            category: "Design",
-            rating: 5,
-            commentary: "skfuhsdkf"
+            title: "Big Swiss",
+            author: "Jen Beagin",
+            category: "mid jan. 2026",
+            rating: 3,
+            commentary: "Trying to formulate my thoughts on this book was genuinely so difficult. Went into it not knowing anything, came out not knowing even more. I'm not the type of person to enjoy an open ending, though this wasn't open, it was not satisfactory and didn't have the resolve needed for what the plot was. The angst was real in this #sapphicrepresentation. Very entertaining writing style though."
         },
         {
             title: "Clean Code",
@@ -65,7 +65,7 @@ function BooksPage() {
     return (
         <div className="pt-20 min-h-screen bg-pink-50 px-6 py-20">
             <div className="max-w-6xl mx-auto">
-                <h1 className="text-6xl font-light text-rose-800 mb-16 text-center">Books</h1>
+                <h1 className="text-5xl font-medium text-rose-800 mb-12 text-center">the books since dec. 2025</h1>
 
                 {/* Header Row*/}
                 <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">

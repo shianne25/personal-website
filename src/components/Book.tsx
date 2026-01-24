@@ -4,11 +4,10 @@ export default function BookCard({ title, author, category, rating, commentary }
     category: string
     rating: number
     commentary: string
-
 }) {
     return (
-        <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-pink-200 p-8 hover:shadow-xl transition-shadow">
-            <div className="flex items-start justify-between mb-4">
+        <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-pink-200 p-6 hover:shadow-xl transition-shadow h-56 flex flex-col">
+            <div className="flex items-start justify-between mb-3">
                 <div className="bg-rose-100 text-rose-800 px-3 py-1 rounded-full text-sm">
                     {category}
                 </div>
@@ -16,7 +15,7 @@ export default function BookCard({ title, author, category, rating, commentary }
                     {[...Array(5)].map((_, i) => (
                         <svg
                             key={i}
-                            className={`w-5 h-5 ${i < rating ? 'text-rose-400' : 'text-gray-300'}`}
+                            className={`w-4 h-4 ${i < rating ? 'text-rose-400' : 'text-gray-300'}`}
                             fill="currentColor"
                             viewBox="0 0 20 20"
                         >
@@ -25,11 +24,16 @@ export default function BookCard({ title, author, category, rating, commentary }
                     ))}
                 </div>
             </div>
-            <h3 className="text-2xl font-medium text-rose-800 mb-2">{title}</h3>
-            <p className="text-rose-700">{author}</p>
-            <div className="mt-auto pt-4 border-t border-pink-100">
-                <p className="text-rose-800/80 italic text-sm leading-relaxed">
+
+            <h3 className="text-xl font-medium text-rose-800 mb-1">{title}</h3>
+            <p className="text-sm text-rose-700 mb-3">by {author}</p>
+
+            <div className="mt-auto pt-3 border-t border-pink-100">
+                <p className="text-rose-800/80 italic text-xs leading-relaxed line-clamp-2">
                     "{commentary}"
+                </p>
+                <p className="text-rose-400 text-xs mt-1 font-medium">
+                    Click for full review →
                 </p>
             </div>
         </div>

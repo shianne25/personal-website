@@ -38,7 +38,7 @@ function HomePage() {
                             Shianne Liang
                         </h1>
                         <p className="text-3xl text-rose-700 mb-6 font-light">
-                            Be epic, always.
+                            be epic, always.
                         </p>
 
                         {/* Social Icons */}
@@ -99,7 +99,7 @@ function HomePage() {
             </section>
 
             {/* About Section */}
-            <section id="about" className="min-h-screen flex items-center justify-center px-6 py-20">
+            <section id="about" className="min-h-screen flex items-center justify-center px-6 py-2">
                 <div className="max-w-5xl w-full">
                     <h2 className="text-6xl font-light text-rose-800 mb-16 text-center">About</h2>
                     <div className="bg-white/70 backdrop-blur-sm rounded-3xl border border-pink-200 p-12">
@@ -113,13 +113,8 @@ function HomePage() {
                 </div>
             </section>
 
-            {/*CHUUUUUUCHUUUCHUUU */}
-            <div className="flex justify-center">
-                <img src="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338" alt="Shianne Liang" className="rounded-2xl border border-pink-200 shadow-lg w-full max-w-2xl h-auto" />
-            </div>
-
             {/* Experience Section */}
-            <section id="experience" className="min-h-screen flex items-center justify-center px-6 py-20">
+            <section id="experience" className="min-h-screen flex items-center justify-center px-6 py-8">
                 <div className="max-w-5xl w-full">
                     <h2 className="text-6xl font-light text-rose-800 mb-16 text-center">Experience</h2>
 
@@ -129,16 +124,16 @@ function HomePage() {
 
                         <div className="space-y-12">
                             <ExperienceCard
-                                period="2023 - Present"
-                                title="Senior Designer"
-                                company="Creative Studio"
-                                description="Leading design projects and mentoring junior designers"
+                                period=" Jan. 2026 - Present"
+                                title="TPM + Fullstack Developer"
+                                company="NeedList.org"
+                                description="building good things"
                             />
                             <ExperienceCard
-                                period="2021 - 2023"
-                                title="Full Stack Developer"
-                                company="Tech Company"
-                                description="Built scalable web applications using modern technologies"
+                                period="2021 - 2025"
+                                title="Locked in sigma"
+                                company="Locked in sickma"
+                                description="Lockedin sigma"
                             />
                             <ExperienceCard
                                 period="2007 - 2021"
@@ -152,7 +147,7 @@ function HomePage() {
             </section>
 
             {/* Projects Section */}
-            <section id="projects" className="min-h-screen flex items-center justify-center px-6 py-20">
+            <section id="projects" className="min-h-screen flex items-center justify-center px-6 py-8">
                 <div className="max-w-6xl w-full">
                     <h2 className="text-6xl font-light text-rose-800 mb-16 text-center">Projects</h2>
 
