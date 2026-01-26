@@ -17,7 +17,7 @@ export default function Navigation() {
     const isHome = location.pathname === '/'
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-pink-50/95 backdrop-blur-sm border-b border-pink-100">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-pink-100/95 backdrop-blur-sm border-b border-pink-100">
             <div className="max-w-7xl mx-auto px-6 py-1">
                 <div className="flex justify-between items-center">
                     {/* <Link to="/" className="text-2xl font-light text-rose-800">

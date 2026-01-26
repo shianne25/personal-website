@@ -13,11 +13,10 @@ interface Book {
     commentary: string;
 }
 function BooksPage() {
-    // Step 2: Create the search "memory" (state)
+    //Create the search "memory" (state)
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
-    // Step 3: Move your books into an Array
     const allBooks = [
         {
             title: "Big Swiss",
@@ -27,36 +26,23 @@ function BooksPage() {
             commentary: "Trying to formulate my thoughts on this book was genuinely so difficult. Went into it not knowing anything, came out not knowing even more. I'm not the type of person to enjoy an open ending, though this wasn't open, it was not satisfactory and didn't have the resolve needed for what the plot was. The angst was real in this #sapphicrepresentation. Very entertaining writing style though."
         },
         {
-            title: "Clean Code",
-            author: "Robert C. Martin",
-            category: "Programming",
-            rating: 5,
-            commentary: "skfuhsdkf"
-        },
-        {
-            title: "Atomic Habits",
-            author: "James Clear",
-            category: "Self-Help",
+            title: "The Heaven & Earth Grocery Store",
+            author: "James McBride",
+            category: "end of dec. 2025",
             rating: 4,
-            commentary: "skfuhsdkf"
+            commentary: "Genuine and natural connections between marginalized communities. So heartwarming to see, it was like just reading life unfold, little plot, but a lot of character. Moved slow, but I was invested."
+
         },
         {
-            title: "Refactoring UI",
-            author: "Adam Wathan & Steve Schoger",
-            category: "Design",
-            rating: 5,
-            commentary: "skfuhsdkf"
-        },
-        {
-            title: "The Pragmatic Programmer",
-            author: "David Thomas & Andrew Hunt",
-            category: "Programming",
-            rating: 5,
-            commentary: "skfuhsdkf"
+            title: "The Safekeep",
+            author: "Yael van der Wouden",
+            category: "post exams dec 2025",
+            rating: 4,
+            commentary: "Oh this book was crazy."
         }
     ]
 
-    // Step 4: Logic to filter books as you type
+    // Filter books
     const filteredBooks = allBooks.filter(book =>
         book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         book.author.toLowerCase().includes(searchQuery.toLowerCase())
@@ -94,7 +80,7 @@ function BooksPage() {
                         </button>
                     )}
 
-                    {/* Step 5: The Search Bar */}
+                    {/* Search Bar */}
                     <div className="relative w-full md:w-72">
                         <input
                             type="text"
@@ -111,19 +97,6 @@ function BooksPage() {
                     </div>
                 </div>
 
-                {/* Step 6: Map through the filtered results */}
-                {/* <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-                    {filteredBooks.map((book, index) => (
-                        <BookCard
-                            key={index}
-                            title={book.title}
-                            author={book.author}
-                            category={book.category}
-                            rating={book.rating}
-                            commentary={book.commentary}
-                        />
-                    ))}
-                </div> */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
                     {filteredBooks.map((book, index) => (
                         <div key={index} onClick={() => setSelectedBook(book)} className="cursor-pointer">
