@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useState } from 'react' // Step 1: Add this
 import BookCard from '../components/Book'
+import { allBooks } from '../book-reviews/bookReviews' // Step 2: Import the book data
 
 export const Route = createFileRoute('/books')({
     component: BooksPage,
@@ -17,31 +18,6 @@ function BooksPage() {
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
 
-    const allBooks = [
-        {
-            title: "Big Swiss",
-            author: "Jen Beagin",
-            category: "mid jan. 2026",
-            rating: 3,
-            commentary: "Trying to formulate my thoughts on this book was genuinely so difficult. Went into it not knowing anything, came out not knowing even more. I'm not the type of person to enjoy an open ending, though this wasn't open, it was not satisfactory and didn't have the resolve needed for what the plot was. The angst was real in this #sapphicrepresentation. Very entertaining writing style though."
-        },
-        {
-            title: "The Heaven & Earth Grocery Store",
-            author: "James McBride",
-            category: "end of dec. 2025",
-            rating: 4,
-            commentary: "Genuine and natural connections between marginalized communities. So heartwarming to see, it was like just reading life unfold, little plot, but a lot of character. Moved slow, but I was invested."
-
-        },
-        {
-            title: "The Safekeep",
-            author: "Yael van der Wouden",
-            category: "post exams dec 2025",
-            rating: 4,
-            commentary: "Oh this book was crazy."
-        }
-    ]
-
     // Filter books
     const filteredBooks = allBooks.filter(book =>
         book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -51,7 +27,7 @@ function BooksPage() {
     return (
         <div className="pt-20 min-h-screen bg-pink-50 px-6 py-20">
             <div className="max-w-6xl mx-auto">
-                <h1 className="text-5xl font-medium text-rose-800 mb-12 text-center">the books since dec. 2025</h1>
+                <h1 className="text-5xl font-medium text-rose-800 mb-12 text-center">i read! yes i read!</h1>
 
                 {/* Header Row*/}
                 <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -62,7 +38,7 @@ function BooksPage() {
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                             <h3 className="text-xl font-medium text-rose-800">
                                 <span className="font-bold">Current Read: </span>
-                                <span> Genghis Khan and the Making of the Modern World </span>
+                                <span> Martyr! </span>
                             </h3>
                         </div>
                     </div>
@@ -111,7 +87,7 @@ function BooksPage() {
                         onClick={() => setSelectedBook(null)} // Click outside to close
                     >
                         <div
-                            className="bg-white rounded-3xl p-10 max-w-lg w-full shadow-2xl border border-pink-100 relative animate-in fade-in zoom-in duration-300"
+                            className="bg-white rounded-3xl p-10 max-w-lg w-full shadow-2xl border border-pink-100 relative animate-in fade-in zoom-in duration-300 max-h-[80vh] overflow-y-auto"
                             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the card itself
                         >
                             {/* Close Button */}

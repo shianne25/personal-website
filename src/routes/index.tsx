@@ -72,19 +72,16 @@ function HomePage() {
                         {/* Stats */}
                         <div className="grid grid-cols-3 gap-4">
                             <div className="bg-white/50 backdrop-blur-sm rounded-2xl border border-pink-200 p-6 text-center">
-                                <div className="text-4xl font-light text-rose-800 mb-2">10+</div>
-                                {/* <div className="text-rose-700">Happiness</div> */}
-                                <img src="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338" alt="Shianne Liang" className="rounded-2xl border border-pink-200 shadow-lg w-full max-w-2xl h-auto" />
+                                <div className="text-4xl font-light text-rose-800 mb-2">100%</div>
+                                <div className="text-rose-700">Happiness</div>
                             </div>
                             <div className="bg-white/50 backdrop-blur-sm rounded-2xl border border-pink-200 p-6 text-center">
                                 <div className="text-4xl font-light text-rose-800 mb-2">18</div>
-                                {/* <div className="text-rose-700">Years</div> */}
-                                <img src="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338" alt="Shianne Liang" className="rounded-2xl border border-pink-200 shadow-lg w-full max-w-2xl h-auto" />
+                                <div className="text-rose-700">Years of Epic</div>
                             </div>
                             <div className="bg-white/50 backdrop-blur-sm rounded-2xl border border-pink-200 p-6 text-center">
-                                <div className="text-4xl font-light text-rose-800 mb-2">20+</div>
-                                {/* <div className="text-rose-700">Days</div> */}
-                                <img src="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338" alt="Shianne Liang" className="rounded-2xl border border-pink-200 shadow-lg w-full max-w-2xl h-auto" />
+                                <div className="text-4xl font-light text-rose-800 mb-2">2+</div>
+                                <div className="text-rose-700">Projects</div>
                             </div>
                         </div>
                     </div>
@@ -131,15 +128,15 @@ function HomePage() {
                             />
                             <ExperienceCard
                                 period="2021 - 2025"
-                                title="Locked in sigma"
-                                company="Locked in sickma"
-                                description="Lockedin sigma"
+                                title="Assistant Teacher"
+                                company="Spirit of Math Schools"
+                                description="helping youth love math and problem-solving"
                             />
                             <ExperienceCard
-                                period="2007 - 2021"
-                                title="silly baka"
-                                company="Digital Agency"
-                                description="Designed user interfaces and conducted user research"
+                                period="birth - 2021"
+                                title="Locked in Sigma"
+                                company="Home"
+                                description="worked to be where I am today"
                             />
                         </div>
                     </div>
@@ -161,7 +158,7 @@ function HomePage() {
                         <ProjectCard
                             title="Exploding Kittens Digital"
                             description="A digital adaptation of the popular card game, developed using Java and GUI frameworks."
-                            image="https://assets.change.org/photos/7/ao/ua/JIaoUaSpSDVKnzR-800x450-noPad.jpg?1660224338"
+                            image="kittens.avif"
                             link='https://github.com/shianne25/Exploding-Kittens-Project'
                         />
                     </div>
