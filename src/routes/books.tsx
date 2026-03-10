@@ -25,12 +25,12 @@ function BooksPage() {
     )
 
     return (
-        <div className="pt-20 min-h-screen bg-pink-50 px-6 py-20">
+        <div className="pt-20 min-h-screen bg-pink-50 px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
             <div className="max-w-6xl mx-auto">
-                <h1 className="text-5xl font-medium text-rose-800 mb-12 text-center">i read! yes i read!</h1>
+                <h1 className="text-3xl sm:text-5xl font-medium text-rose-800 mb-8 sm:mb-12 text-center">i read! yes i read!</h1>
 
                 {/* Header Row*/}
-                <div className="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
 
                     {/* Current Read */}
                     <div className="flex">
@@ -38,26 +38,24 @@ function BooksPage() {
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                             <h3 className="text-xl font-medium text-rose-800">
                                 <span className="font-bold">Current Read: </span>
-                                <span> Martyr! </span>
+                                <span> Madonna In A Fur Coat </span>
                             </h3>
                         </div>
                     </div>
 
-                    {/* Search Bar Section */}
-                    {searchQuery && (
-                        <button
-                            onClick={() => setSearchQuery('')}
-                            className="absolute right-10 text-rose-300 hover:text-rose-500 transition-colors"
-                            aria-label="Clear search"
-                        >
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                        </button>
-                    )}
-
                     {/* Search Bar */}
-                    <div className="relative w-full md:w-72">
+                    <div className="relative w-full sm:w-96 md:w-72">
+                        {searchQuery && (
+                            <button
+                                onClick={() => setSearchQuery('')}
+                                className="absolute right-10 top-3 text-rose-400 hover:text-rose-600 transition-colors"
+                                aria-label="Clear search"
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        )}
                         <input
                             type="text"
                             placeholder="Search title or author..."
@@ -73,7 +71,7 @@ function BooksPage() {
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
                     {filteredBooks.map((book, index) => (
                         <div key={index} onClick={() => setSelectedBook(book)} className="cursor-pointer">
                             <BookCard {...book} />
@@ -87,7 +85,7 @@ function BooksPage() {
                         onClick={() => setSelectedBook(null)} // Click outside to close
                     >
                         <div
-                            className="bg-white rounded-3xl p-10 max-w-lg w-full shadow-2xl border border-pink-100 relative animate-in fade-in zoom-in duration-300 max-h-[80vh] overflow-y-auto"
+                            className="bg-white rounded-3xl p-6 sm:p-8 max-w-full sm:max-w-xl md:max-w-2xl w-full shadow-2xl border border-pink-100 relative animate-in fade-in zoom-in duration-300 max-h-[80vh] overflow-y-auto"
                             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking the card itself
                         >
                             {/* Close Button */}

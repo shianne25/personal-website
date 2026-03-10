@@ -6,7 +6,7 @@ export default function BookCard({ title, author, category, rating, commentary }
     commentary: string
 }) {
     return (
-        <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-pink-200 p-6 hover:shadow-xl transition-shadow h-56 flex flex-col">
+        <div className="bg-white/70 backdrop-blur-sm rounded-2xl border border-pink-200 p-4 sm:p-6 hover:shadow-xl transition-shadow min-h-[14rem] flex flex-col">
             <div className="flex items-start justify-between mb-3">
                 <div className="bg-rose-100 text-rose-800 px-3 py-1 rounded-full text-sm">
                     {category}

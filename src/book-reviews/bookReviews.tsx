@@ -7,6 +7,13 @@ export const allBooks = [
         commentary: "So raw. So beautiful."
     },
     {
+        title: "I Want to Die But I Want to Eat Tteokbokki",
+        author: "Baek Sehee",
+        category: "mid feb. 2026",
+        rating: 5,
+        commentary: "So raw. So beautiful."
+    },
+    {
         title: "Genghis Khan and the Making of the Modern World",
         author: "Jack Weatherford",
         category: "late jan. - early feb. 2026",
