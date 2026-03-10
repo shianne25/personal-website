@@ -1,10 +1,10 @@
 export const allBooks = [
     {
-        title: "I Want to Die But I Want to Eat Tteokbokki",
-        author: "Baek Sehee",
-        category: "mid feb. 2026",
-        rating: 5,
-        commentary: "So raw. So beautiful."
+        title: "Martyr!",
+        author: "Kaveh Akbar",
+        category: "late feb. - early mar. 2026",
+        rating: 4,
+        commentary: "Could definitely tell it was written by a poet. I am not literate enough to detect whether this is 2016 Tumblr poetry or just a well written book. Anyways, I could tell that time went into writing and crafting this book. There were words and phrasings used to encapsulate concepts I didn't know could be described. I was really impressed with the style and intricacies within the novel and the ability of the author to maintain a plot (though slow moving at times). Ending was up to interpretation, but I didn't hate it really. It was settled in a way that to me, made sense. The pieces of the puzzle set in with each other. Also just so many nice quotes about the burdens of death and living."
     },
     {
         title: "I Want to Die But I Want to Eat Tteokbokki",
