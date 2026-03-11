@@ -5,6 +5,9 @@ import { allBooks } from '../book-reviews/bookReviews' // Step 2: Import the boo
 
 export const Route = createFileRoute('/books')({
     component: BooksPage,
+    onEnter: () => {
+        window.scrollTo(0, 0)
+    },
 })
 interface Book {
     title: string;
