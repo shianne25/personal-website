@@ -1,5 +1,12 @@
 export const allBooks = [
     {
+        title: "Madonna in a Fur Coat",
+        author: "Sabahattin Ali",
+        category: "mid mar. 2026",
+        rating: 3,
+        commentary: "Yearner or obsesser??? I don't know, but it was a fun read."
+    },
+    {
         title: "Martyr!",
         author: "Kaveh Akbar",
         category: "late feb. - early mar. 2026",

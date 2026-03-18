@@ -104,7 +104,7 @@ function HomePage() {
                             Hello! I'm Shianne.
                         </p>
                         <p className="text-2xl text-rose-800 leading-relaxed">
-                            Gonna figure out.
+                            I love kewpie mayo, tech, and reading. One day, I'll make all of these connect to each other. In the meantime, I will make cool things and read cool books.
                         </p>
                     </div>
                 </div>

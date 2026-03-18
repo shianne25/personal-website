@@ -41,7 +41,7 @@ function BooksPage() {
                             <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                             <h3 className="text-xl font-medium text-rose-800">
                                 <span className="font-bold">Current Read: </span>
-                                <span> Madonna In A Fur Coat </span>
+                                <span> Rejection </span>
                             </h3>
                         </div>
                     </div>
