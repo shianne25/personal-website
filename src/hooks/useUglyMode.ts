@@ -1,15 +1,14 @@
 import { useContext } from 'react'
-import { UglyModeContext } from '../context/UglyModeContext'
+import { DisplayModeContext, type DisplayMode } from '../context/DisplayModeContext'
 
-interface UglyModeContextType {
-    isUgly: boolean
-    toggleUgly: () => void
-}
-
-export function useUglyMode(): UglyModeContextType {
-    const context = useContext(UglyModeContext)
+export function useDisplayMode(): {
+    mode: DisplayMode
+    setMode: (mode: DisplayMode) => void
+    cycleMode: () => void
+} {
+    const context = useContext(DisplayModeContext)
     if (!context) {
-        throw new Error('useUglyMode must be used within UglyModeProvider')
+        throw new Error('useDisplayMode must be used within DisplayModeProvider')
     }
-    return context as UglyModeContextType
+    return context
 }

@@ -2,15 +2,15 @@
 import { createRootRoute, Outlet } from '@tanstack/react-router'
 // import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import Navigation from '../components/Navigation'
-import { UglyModeProvider } from '../context/UglyModeContext'
+import { DisplayModeProvider } from '../context/DisplayModeContext'
 
 export const Route = createRootRoute({
     component: () => (
-        <UglyModeProvider>
+        <DisplayModeProvider>
             <div className="min-h-screen bg-white">
-                <Navigation />
+                {/* <Navigation /> */}
                 <Outlet />
             </div>
-        </UglyModeProvider>
+        </DisplayModeProvider>
     ),
 })

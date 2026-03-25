@@ -1,12 +1,12 @@
 // src/components/Navigation.tsx
 import { Link, useLocation } from '@tanstack/react-router'
 import { useState } from 'react'
-import { useUglyMode } from '../hooks/useUglyMode'
+import { useDisplayMode } from '../hooks/useUglyMode'
 
 export default function Navigation() {
     const location = useLocation()
     const [open, setOpen] = useState(false)
-    const { isUgly, toggleUgly } = useUglyMode()
+    const { mode, cycleMode } = useDisplayMode()
 
     const scrollToSection = (sectionId: string) => {
         // Only scroll if we're on the home page
@@ -112,14 +112,16 @@ export default function Navigation() {
                             Books
                         </Link>
                         <button
-                            onClick={toggleUgly}
-                            className={`px-3 py-1 rounded-lg font-medium transition-all transition-transform duration-300 hover:scale-110 ${isUgly
+                            onClick={cycleMode}
+                            className={`px-3 py-1 rounded-lg font-medium transition-all transition-transform duration-300 hover:scale-110 ${mode === 'ugly'
                                 ? 'bg-lime-300 text-black border-2 border-pink-500 hover:bg-pink-400'
-                                : 'bg-rose-200 text-rose-800 border-2 border-rose-300 hover:bg-rose-300'
+                                : mode === 'y2k'
+                                    ? 'bg-blue-300 text-black border-2 border-indigo-500 hover:bg-indigo-400'
+                                    : 'bg-rose-200 text-rose-800 border-2 border-rose-300 hover:bg-rose-300'
                                 }`}
-                            title="Toggle ugly mode"
+                            title="Cycle display mode"
                         >
-                            {isUgly ? 'Return' : ''}
+                            {mode === 'normal' ? '🟢 Normal' : mode === 'ugly' ? '🤢 Ugly' : '🌀 Y2K'}
                         </button>
                     </div>
                 </div>
@@ -193,16 +195,18 @@ export default function Navigation() {
                         </Link>
                         <button
                             onClick={() => {
-                                toggleUgly()
+                                cycleMode()
                                 setOpen(false)
                             }}
-                            className={`px-3 py-1 rounded-lg font-medium transition-all w-full text-left ${isUgly
+                            className={`px-3 py-1 rounded-lg font-medium transition-all w-full text-left ${mode === 'ugly'
                                 ? 'bg-lime-300 text-black border-2 border-pink-500 hover:bg-pink-400'
-                                : 'bg-rose-200 text-rose-800 border-2 border-rose-300 hover:bg-rose-300'
+                                : mode === 'y2k'
+                                    ? 'bg-blue-300 text-black border-2 border-indigo-500 hover:bg-indigo-400'
+                                    : 'bg-rose-200 text-rose-800 border-2 border-rose-300 hover:bg-rose-300'
                                 }`}
-                            title="Toggle ugly mode"
+                            title="Cycle display mode"
                         >
-                            {isUgly ? 'Return' : '👓'}
+                            {mode === 'normal' ? '🟢 Normal' : mode === 'ugly' ? '🤢 Ugly' : '🌀 Y2K'}
                         </button>
                     </div>
                 )}
