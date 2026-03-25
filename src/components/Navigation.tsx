@@ -1,10 +1,12 @@
 // src/components/Navigation.tsx
 import { Link, useLocation } from '@tanstack/react-router'
 import { useState } from 'react'
+import { useUglyMode } from '../hooks/useUglyMode'
 
 export default function Navigation() {
     const location = useLocation()
     const [open, setOpen] = useState(false)
+    const { isUgly, toggleUgly } = useUglyMode()
 
     const scrollToSection = (sectionId: string) => {
         // Only scroll if we're on the home page
@@ -109,6 +111,16 @@ export default function Navigation() {
                         >
                             Books
                         </Link>
+                        <button
+                            onClick={toggleUgly}
+                            className={`px-3 py-1 rounded-lg font-medium transition-all transition-transform duration-300 hover:scale-110 ${isUgly
+                                ? 'bg-lime-300 text-black border-2 border-pink-500 hover:bg-pink-400'
+                                : 'bg-rose-200 text-rose-800 border-2 border-rose-300 hover:bg-rose-300'
+                                }`}
+                            title="Toggle ugly mode"
+                        >
+                            {isUgly ? 'Return' : ''}
+                        </button>
                     </div>
                 </div>
                 {/* mobile dropdown content */}
@@ -179,6 +191,19 @@ export default function Navigation() {
                         >
                             Books
                         </Link>
+                        <button
+                            onClick={() => {
+                                toggleUgly()
+                                setOpen(false)
+                            }}
+                            className={`px-3 py-1 rounded-lg font-medium transition-all w-full text-left ${isUgly
+                                ? 'bg-lime-300 text-black border-2 border-pink-500 hover:bg-pink-400'
+                                : 'bg-rose-200 text-rose-800 border-2 border-rose-300 hover:bg-rose-300'
+                                }`}
+                            title="Toggle ugly mode"
+                        >
+                            {isUgly ? 'Return' : '👓'}
+                        </button>
                     </div>
                 )}
             </div>

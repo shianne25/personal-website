@@ -1,0 +1,204 @@
+/* Ugly mode styles - inspired by retro 2000s websites */
+
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap');
+
+.ugly-mode {
+    /* Fixed: Added url() and removed extra quotes/line breaks */
+    background-image: url('/basketball.png'), linear-gradient(45deg, #ffff00, #00ffff);
+    background-repeat: repeat;
+    background-size: 100px 100px, auto;
+    /* This makes the Chuu tiles small! */
+}
+
+@keyframes uglySpin {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+/* Define the movement */
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+
+    /* -50% because we doubled the text */
+}
+
+/* Create the class */
+.animate-marquee {
+    display: inline-block;
+    animation: marquee 10s linear infinite;
+    min-width: 100%;
+}
+
+.ugly-section {
+    position: relative;
+    background: linear-gradient(135deg, #cddc39 0%, #00ffff 50%, #ff00ff 100%) !important;
+    border: 5px solid #ffff00;
+    transform: rotate(var(--rotation, 0deg)) skew(var(--skew, 0deg));
+    box-shadow:
+        0 0 20px #ffff00,
+        0 0 40px #00ffff,
+        0 0 60px #ff00ff,
+        inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.ugly-text {
+    font-weight: bold;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.comicsans-text {
+    font-family: "Comic Sans MS", "Comic Sans";
+}
+
+.ugly-chaos {
+    position: absolute;
+    font-weight: bold;
+    opacity: 0.7;
+    font-size: 2rem;
+}
+
+.ugly-chaos-1 {
+    top: 10%;
+    left: 5%;
+    transform: rotate(-15deg);
+    color: #ff00ff;
+    text-shadow: 2px 2px 0 #00ffff;
+}
+
+.ugly-chaos-2 {
+    top: 20%;
+    right: 10%;
+    transform: rotate(25deg);
+    color: #1e00ff;
+    text-shadow: 2px 2px 0 #ff0000;
+}
+
+.ugly-chaos-3 {
+    bottom: 20%;
+    left: 15%;
+    transform: rotate(-30deg);
+    color: #ffff00;
+    text-shadow: 2px 2px 0 #ff00ff;
+}
+
+.ugly-chaos-4 {
+    bottom: 10%;
+    right: 5%;
+    transform: rotate(20deg);
+    color: #00ffff;
+    text-shadow: 2px 2px 0 #ff00ff;
+}
+
+.ugly-border {
+    border: 8px solid;
+    border-color: #ff00ff #00ffff #ff0000 #00ff00;
+    padding: 15px;
+    background: #ffff00 !important;
+    box-shadow:
+        5px 5px 0 #ff00ff,
+        10px 10px 0 #00ffff,
+        -5px -5px 0 #00ff00;
+}
+
+.ugly-title {
+    color: #ff0000 !important;
+    text-shadow:
+        3px 3px 0 #00ff00,
+        6px 6px 0 #0000ff,
+        9px 9px 0 #ffff00;
+    font-size: 2.5em !important;
+    font-weight: 900 !important;
+    transform: skew(-15deg);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.ugly-card {
+    background: linear-gradient(45deg, #ff00ff, #00ffff) !important;
+    border: 5px dashed #ffff00 !important;
+    transform: rotate(-5deg);
+    box-shadow:
+        0 0 30px #ff00ff,
+        5px 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.ugly-hero-container {
+    background: repeating-linear-gradient(45deg,
+            #ffff00,
+            #ffff00 10px,
+            #00ffff 10px,
+            #00ffff 20px,
+            #ff00ff 20px,
+            #ff00ff 30px,
+            #00ff00 30px,
+            #00ff00 40px) !important;
+}
+
+.ugly-image-frame {
+    border: 10px solid;
+    border-color: #ff0000 #ffff00 #00ff00 #0000ff;
+    background: #00ffff !important;
+    box-shadow:
+        8px 8px 0 #ff00ff,
+        -5px -5px 0 #ff0000;
+    transform: rotate(3deg);
+}
+
+.ugly-blink {
+    animation: uglyblink 0.6s infinite;
+}
+
+@keyframes uglyblink {
+
+    0%,
+    49%,
+    100% {
+        opacity: 1;
+    }
+
+    50%,
+    99% {
+        opacity: 0.3;
+    }
+}
+
+.ugly-rotate {
+    animation: uglyrotate 10s linear infinite;
+}
+
+@keyframes uglyrotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.ugly-float {
+    animation: uglyfloat 6s ease-in-out infinite;
+}
+
+@keyframes uglyfloat {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+}
