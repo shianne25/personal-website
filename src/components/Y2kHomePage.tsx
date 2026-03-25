@@ -14,12 +14,11 @@ export interface Book {
 type TabKey = 'about' | 'experience' | 'projects' | 'books'
 
 const tracks = [
-    { title: "Graduation", artist: "Kanye West", duration: 223, color: ["#ff6600", "#ffcc00", "#ff3300"] },
-    { title: "Neon Gravestones", artist: "twenty one pilots", duration: 258, color: ["#8800ff", "#cc44ff", "#440088"] },
-    { title: "Ribs", artist: "Lorde", duration: 232, color: ["#0055cc", "#44aaff", "#003399"] },
-    { title: "Mr. Brightside", artist: "The Killers", duration: 222, color: ["#cc0033", "#ff4466", "#880022"] },
-    { title: "Midnight City", artist: "M83", duration: 243, color: ["#006644", "#00cc88", "#003322"] },
-    { title: "Lua", artist: "Bright Eyes", duration: 214, color: ["#885500", "#ffaa22", "#553300"] },
+    { title: "Ouroborus", artist: "Maiorca", duration: 200, color: ["#ff6600", "#ffcc00", "#ff3300"] },
+    { title: "Forever", artist: "Mahalia", duration: 210, color: ["#8800ff", "#cc44ff", "#440088"] },
+    { title: "I Won't Cry Anymore", artist: "Marvin Gaye", duration: 173, color: ["#0055cc", "#44aaff", "#003399"] },
+    { title: "Paglaho", artist: "Midday Wednesday", duration: 282, color: ["#cc0033", "#ff4466", "#880022"] },
+    { title: "RIPCORD", artist: "Greek", duration: 163, color: ["#006644", "#00cc88", "#003322"] },
 ]
 
 const tabLabels: Record<TabKey, string> = {
