@@ -1,10 +1,10 @@
 // src/routes/index.tsx
 import { createFileRoute } from '@tanstack/react-router'
-import ExperienceCard from '../components/Experience'
-import ProjectCard from '../components/Project'
-import UglyHomePage from '../components/UglyHomePage'
+// import ExperienceCard from '../components/Experience'
+// import ProjectCard from '../components/Project'
+// import UglyHomePage from '../components/UglyHomePage'
 import Y2kHomePage from '../components/Y2kHomePage'
-import { useDisplayMode } from '../hooks/useUglyMode'
+// import { useDisplayMode } from '../hooks/useUglyMode'
 
 export const Route = createFileRoute('/')({
     component: HomePage,

@@ -25,6 +25,7 @@
 //                 </div>
 //             </div>
 
+
 //             <h3 className="text-xl font-medium text-rose-800 mb-1">{title}</h3>
 //             <p className="text-sm text-rose-700 mb-3">by {author}</p>
 
@@ -39,7 +40,13 @@
 //         </div>
 //     )
 // }
-
+export interface Book {
+    title: string;
+    author: string;
+    category: string;
+    rating: number;
+    commentary: string;
+}
 export default function BookCard({ title, author, category, rating, commentary }: Book) {
     return (
         <div className="cursor-pointer bg-[#c0c0c0] border-[3px] border-t-white border-l-white border-b-[#808080] border-r-[#808080] p-4 hover:brightness-105 active:border-inset group transition-all">

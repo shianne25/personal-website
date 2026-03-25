@@ -3,7 +3,7 @@ import '../styles/ugly-mode.css'
 import { allBooks } from '../book-reviews/bookReviews' // Ensure this path is correct
 import BookCard from './Book';
 
-interface Book {
+export interface Book {
     title: string;
     author: string;
     category: string;
