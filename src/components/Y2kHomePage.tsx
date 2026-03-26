@@ -14,12 +14,32 @@ export interface Book {
 type TabKey = 'about' | 'experience' | 'projects' | 'books'
 
 const tracks = [
-    { title: "Ouroborus", artist: "Maiorca", duration: 200, color: ["#ff6600", "#ffcc00", "#ff3300"] },
-    { title: "Forever", artist: "Mahalia", duration: 210, color: ["#8800ff", "#cc44ff", "#440088"] },
-    { title: "I Won't Cry Anymore", artist: "Marvin Gaye", duration: 173, color: ["#0055cc", "#44aaff", "#003399"] },
-    { title: "Paglaho", artist: "Midday Wednesday", duration: 282, color: ["#cc0033", "#ff4466", "#880022"] },
-    { title: "RIPCORD", artist: "Greek", duration: 163, color: ["#006644", "#00cc88", "#003322"] },
+    { title: "Ouroborus", artist: "Maiorca", duration: 200, color: ["#ff6600", "#ffcc00", "#ff3300"], spotifyId: "1dIgOTfn3keJORZZkIhZfZ" },
+    { title: "Forever", artist: "Mahalia", duration: 210, color: ["#8800ff", "#cc44ff", "#440088"], spotifyId: "5YPXwMPngtZUXWzmtS2sHV" },
+    { title: "I Won't Cry Anymore", artist: "Marvin Gaye", duration: 173, color: ["#0055cc", "#44aaff", "#003399"], spotifyId: "0cQdt3fQ4yRvDmPdXhf51V" },
+    { title: "Paglaho", artist: "Midday Wednesday", duration: 282, color: ["#cc0033", "#ff4466", "#880022"], spotifyId: "2UqdfbPf3Kx9ZaywqsjdUo" },
+    { title: "RIPCORD", artist: "greek", duration: 163, color: ["#006644", "#00cc88", "#003322"], spotifyId: "2EpxQyOEKiqQ7KRnN5mlnT" },
 ]
+
+// Module-level singleton: loads Spotify IFrame API exactly once across all mounts
+let _spotifyApiPromise: Promise<unknown> | null = null
+function loadSpotifyApi(): Promise<unknown> {
+    if (_spotifyApiPromise) return _spotifyApiPromise
+    _spotifyApiPromise = new Promise((resolve) => {
+        if ((window as any).SpotifyIframeApi) { resolve((window as any).SpotifyIframeApi); return }
+        const prev = (window as any).onSpotifyIframeApiReady
+            ; (window as any).onSpotifyIframeApiReady = (IFrameAPI: unknown) => {
+                ; (window as any).SpotifyIframeApi = IFrameAPI
+                if (prev) prev(IFrameAPI)
+                resolve(IFrameAPI)
+            }
+        const script = document.createElement('script')
+        script.src = 'https://open.spotify.com/embed/iframe-api/v1'
+        script.async = true
+        document.body.appendChild(script)
+    })
+    return _spotifyApiPromise
+}
 
 const tabLabels: Record<TabKey, string> = {
     about: 'About Me',
@@ -48,6 +68,11 @@ export default function Y2kHomePage() {
     const vizFrameRef = useRef<number | null>(null)
     const barsRef = useRef<number[]>(Array(18).fill(0).map(() => Math.random()))
     const barTargetsRef = useRef<number[]>(Array(18).fill(0).map(() => Math.random()))
+    // Spotify IFrame API
+    const embedRef = useRef<HTMLDivElement>(null)
+    const controllerRef = useRef<any>(null)
+    const isPlayingRef = useRef(false)
+    const currentTrackIdxRef = useRef(0)
 
     const fmtTime = (s: number) => {
         return Math.floor(s / 60) + ':' + (s % 60 < 10 ? '0' : '') + Math.floor(s % 60)
@@ -55,34 +80,34 @@ export default function Y2kHomePage() {
 
     const startPlay = () => {
         setIsPlaying(true)
+        isPlayingRef.current = true
         if (tickerRef.current) clearInterval(tickerRef.current)
-        tickerRef.current = setInterval(() => {
-            setElapsed(e => {
-                const t = tracks[currentTrackIdx]
-                if (e + 1 >= t.duration) {
-                    nextTrack()
-                    return 0
-                }
-                return e + 1
-            })
-        }, 1000)
         startViz()
     }
 
     const stopPlay = () => {
         setIsPlaying(false)
+        isPlayingRef.current = false
         if (tickerRef.current) clearInterval(tickerRef.current)
         if (vizFrameRef.current) cancelAnimationFrame(vizFrameRef.current)
     }
 
     const togglePlay = () => {
-        if (isPlaying) stopPlay()
-        else startPlay()
+        if (controllerRef.current) {
+            controllerRef.current.togglePlay()
+        } else {
+            if (isPlaying) stopPlay()
+            else startPlay()
+        }
     }
 
     const loadTrack = (idx: number) => {
         setCurrentTrackIdx(idx)
+        currentTrackIdxRef.current = idx
         setElapsed(0)
+        if (controllerRef.current) {
+            controllerRef.current.loadUri(`spotify:track:${tracks[idx].spotifyId}`)
+        }
     }
 
     const nextTrack = () => {
@@ -102,8 +127,8 @@ export default function Y2kHomePage() {
         if (!ctx) return
 
         const frame = () => {
-            if (!isPlaying) return
-            const t = tracks[currentTrackIdx]
+            if (!isPlayingRef.current) return
+            const t = tracks[currentTrackIdxRef.current]
             const colors = t.color
             ctx.clearRect(0, 0, 102, 102)
             ctx.fillStyle = '#001a55'
@@ -132,7 +157,7 @@ export default function Y2kHomePage() {
             const now = Date.now() / 1000
             ctx.save()
             ctx.translate(51, 51)
-            ctx.rotate(now * (isPlaying ? 1.2 : 0))
+            ctx.rotate(now * 1.2)
             ctx.beginPath();
             (ctx as any).arc(0, 0, 20, 0, Math.PI * 2)
             ctx.strokeStyle = 'rgba(255,200,0,0.25)'
@@ -164,6 +189,41 @@ export default function Y2kHomePage() {
             if (tickerRef.current) clearInterval(tickerRef.current)
             if (vizFrameRef.current) cancelAnimationFrame(vizFrameRef.current)
         }
+    }, [])
+
+    // Load Spotify IFrame API and create the controller — module-level promise is StrictMode-safe
+    useEffect(() => {
+        let destroyed = false
+        loadSpotifyApi().then((IFrameAPI: unknown) => {
+            if (destroyed || !embedRef.current) return
+                ; (IFrameAPI as any).createController(
+                    embedRef.current,
+                    { uri: `spotify:track:${tracks[0].spotifyId}`, width: 300, height: 80 },
+                    (EmbedController: any) => {
+                        if (destroyed) return
+                        controllerRef.current = EmbedController
+                        EmbedController.addListener('playback_update', (e: any) => {
+                            if (destroyed) return
+                            const { position, isPaused } = e.data
+                            setElapsed(Math.floor(position / 1000))
+                            if (isPaused) {
+                                if (isPlayingRef.current) {
+                                    isPlayingRef.current = false
+                                    setIsPlaying(false)
+                                    if (vizFrameRef.current) cancelAnimationFrame(vizFrameRef.current)
+                                }
+                            } else {
+                                if (!isPlayingRef.current) {
+                                    isPlayingRef.current = true
+                                    setIsPlaying(true)
+                                    startViz()
+                                }
+                            }
+                        })
+                    }
+                )
+        })
+        return () => { destroyed = true; controllerRef.current = null }
     }, [])
 
     const t = tracks[currentTrackIdx]
@@ -345,10 +405,13 @@ export default function Y2kHomePage() {
                         </div>
                     </div>
 
+                    {/* Spotify IFrame API mount — off-screen so browser allows audio; visibility:hidden blocks audio in some browsers */}
+                    <div ref={embedRef} style={{ position: 'fixed', bottom: '-300px', left: 0, width: '300px', height: '80px', pointerEvents: 'none' }} />
+
                     <div className="np-playlist-header"><span className="np-playlist-label">▼ PLAYLIST</span></div>
                     <div className="np-playlist" id="playlist">
                         {tracks.map((track, idx) => (
-                            <div key={idx} className={`pl-item ${idx === currentTrackIdx ? 'active' : ''}`} onClick={() => { loadTrack(idx); if (!isPlaying) startPlay() }}>
+                            <div key={idx} className={`pl-item ${idx === currentTrackIdx ? 'active' : ''}`} onClick={() => { loadTrack(idx) }}>
                                 <span className="pl-num">{idx === currentTrackIdx && isPlaying ? '♪' : (idx + 1)}</span>
                                 <div className="pl-info">
                                     <div className="pl-title">{track.title}</div>
@@ -435,7 +498,7 @@ export default function Y2kHomePage() {
 
             <div className="footer">
                 <span className="footer-text">y2k mode ★ welcome page inspired by sampopark & old Netscape layouts</span>
-                <span className="footer-copyright">© Sony Corporation</span>
+                <span className="footer-copyright">Built with React, TanStack, Spotify Embed</span>
             </div>
 
             {
