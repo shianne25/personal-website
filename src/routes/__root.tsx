@@ -3,6 +3,7 @@ import { createRootRoute, Outlet } from '@tanstack/react-router'
 // import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 // import Navigation from '../components/Navigation'
 import { DisplayModeProvider } from '../context/DisplayModeContext'
+import { Analytics } from "@vercel/analytics/react"
 
 export const Route = createRootRoute({
     component: () => (
@@ -11,6 +12,7 @@ export const Route = createRootRoute({
                 {/* <Navigation /> */}
                 <Outlet />
             </div>
+            <Analytics />
         </DisplayModeProvider>
     ),
 })

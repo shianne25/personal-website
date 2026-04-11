@@ -5,20 +5,13 @@ import { createFileRoute } from '@tanstack/react-router'
 // import UglyHomePage from '../components/UglyHomePage'
 import Y2kHomePage from '../components/Y2kHomePage'
 // import { useDisplayMode } from '../hooks/useUglyMode'
-import { Analytics } from "@vercel/analytics/react"
-
 export const Route = createFileRoute('/')({
     component: HomePage,
 })
 
 function HomePage() {
     // const { mode } = useDisplayMode()
-    return (
-        <>
-            <Y2kHomePage />
-            <Analytics />
-        </>
-    )
+    return <Y2kHomePage />
 
     // if (mode === 'ugly') {
     //     return <UglyHomePage />
