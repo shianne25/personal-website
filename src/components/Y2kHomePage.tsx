@@ -14,32 +14,32 @@ export interface Book {
 type TabKey = 'about' | 'experience' | 'projects' | 'books'
 
 const tracks = [
-    { title: "Ouroborus", artist: "Maiorca", duration: 200, color: ["#ff6600", "#ffcc00", "#ff3300"], spotifyId: "1dIgOTfn3keJORZZkIhZfZ" },
-    { title: "Forever", artist: "Mahalia", duration: 210, color: ["#8800ff", "#cc44ff", "#440088"], spotifyId: "5YPXwMPngtZUXWzmtS2sHV" },
-    { title: "I Won't Cry Anymore", artist: "Marvin Gaye", duration: 173, color: ["#0055cc", "#44aaff", "#003399"], spotifyId: "0cQdt3fQ4yRvDmPdXhf51V" },
-    { title: "Paglaho", artist: "Midday Wednesday", duration: 282, color: ["#cc0033", "#ff4466", "#880022"], spotifyId: "2UqdfbPf3Kx9ZaywqsjdUo" },
-    { title: "RIPCORD", artist: "greek", duration: 163, color: ["#006644", "#00cc88", "#003322"], spotifyId: "2EpxQyOEKiqQ7KRnN5mlnT" },
+    { title: "Ouroborus", artist: "Maiorca", duration: 200, color: ["#ff6600", "#ffcc00", "#ff3300"], url: "/track1.m4a" },
+    { title: "Cali Man", artist: "EsDeeKid", duration: 109, color: ["#8800ff", "#cc44ff", "#440088"], url: "/track2.m4a" },
+    { title: "I Won't Cry Anymore", artist: "Marvin Gaye", duration: 173, color: ["#0055cc", "#44aaff", "#003399"], url: "/track3.m4a" },
+    { title: "Paglaho", artist: "Midday Wednesday", duration: 282, color: ["#cc0033", "#ff4466", "#880022"], url: "/track4.m4a" },
+    { title: "RIPCORD", artist: "greek", duration: 163, color: ["#006644", "#00cc88", "#003322"], url: "/track5.m4a" },
 ]
 
 // Module-level singleton: loads Spotify IFrame API exactly once across all mounts
-let _spotifyApiPromise: Promise<unknown> | null = null
-function loadSpotifyApi(): Promise<unknown> {
-    if (_spotifyApiPromise) return _spotifyApiPromise
-    _spotifyApiPromise = new Promise((resolve) => {
-        if ((window as any).SpotifyIframeApi) { resolve((window as any).SpotifyIframeApi); return }
-        const prev = (window as any).onSpotifyIframeApiReady
-            ; (window as any).onSpotifyIframeApiReady = (IFrameAPI: unknown) => {
-                ; (window as any).SpotifyIframeApi = IFrameAPI
-                if (prev) prev(IFrameAPI)
-                resolve(IFrameAPI)
-            }
-        const script = document.createElement('script')
-        script.src = 'https://open.spotify.com/embed/iframe-api/v1'
-        script.async = true
-        document.body.appendChild(script)
-    })
-    return _spotifyApiPromise
-}
+// let _spotifyApiPromise: Promise<unknown> | null = null
+// function loadSpotifyApi(): Promise<unknown> {
+//     if (_spotifyApiPromise) return _spotifyApiPromise
+//     _spotifyApiPromise = new Promise((resolve) => {
+//         if ((window as any).SpotifyIframeApi) { resolve((window as any).SpotifyIframeApi); return }
+//         const prev = (window as any).onSpotifyIframeApiReady
+//             ; (window as any).onSpotifyIframeApiReady = (IFrameAPI: unknown) => {
+//                 ; (window as any).SpotifyIframeApi = IFrameAPI
+//                 if (prev) prev(IFrameAPI)
+//                 resolve(IFrameAPI)
+//             }
+//         const script = document.createElement('script')
+//         script.src = 'https://open.spotify.com/embed/iframe-api/v1'
+//         script.async = true
+//         document.body.appendChild(script)
+//     })
+//     return _spotifyApiPromise
+// }
 
 const tabLabels: Record<TabKey, string> = {
     about: 'About Me',
@@ -50,6 +50,8 @@ const tabLabels: Record<TabKey, string> = {
 
 export default function Y2kHomePage() {
     const [activeTab, setActiveTab] = useState<TabKey>('about')
+
+    const audioRef = useRef<HTMLAudioElement | null>(new Audio(tracks[0].url))
 
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
@@ -93,32 +95,52 @@ export default function Y2kHomePage() {
     }
 
     const togglePlay = () => {
-        if (controllerRef.current) {
-            controllerRef.current.togglePlay()
+        const audio = audioRef.current;
+        if (!audio) return;
+        if (isPlaying) {
+            audio.pause();
+            stopPlay();
         } else {
-            if (isPlaying) stopPlay()
-            else startPlay()
+            audio.play().catch(e => console.log("User interaction required", e));
+            startPlay();
         }
     }
 
     const loadTrack = (idx: number) => {
-        setCurrentTrackIdx(idx)
-        currentTrackIdxRef.current = idx
-        setElapsed(0)
-        if (controllerRef.current) {
-            controllerRef.current.loadUri(`spotify:track:${tracks[idx].spotifyId}`)
-        }
-    }
+        setCurrentTrackIdx(idx);
+        currentTrackIdxRef.current = idx;
+        setElapsed(0);
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        // Stop current viz before switching
+        if (vizFrameRef.current) cancelAnimationFrame(vizFrameRef.current);
+
+        audio.src = tracks[idx].url;
+        audio.load();
+        audio.play()
+            .then(() => {
+                setIsPlaying(true);
+                isPlayingRef.current = true;
+                startViz(); // ← always start viz on load
+            })
+            .catch(err => {
+                console.error("Playback failed:", err);
+                setIsPlaying(false);
+                isPlayingRef.current = false;
+            });
+    };
 
     const nextTrack = () => {
-        const idx = (currentTrackIdx + 1) % tracks.length
-        loadTrack(idx)
-    }
+        // Use the Ref because it updates instantly, unlike state
+        const nextIdx = (currentTrackIdxRef.current + 1) % tracks.length;
+        loadTrack(nextIdx);
+    };
 
     const prevTrack = () => {
-        const idx = (currentTrackIdx - 1 + tracks.length) % tracks.length
-        loadTrack(idx)
-    }
+        const prevIdx = (currentTrackIdxRef.current - 1 + tracks.length) % tracks.length;
+        loadTrack(prevIdx);
+    };
 
     const startViz = () => {
         if (!canvasRef.current) return
@@ -192,41 +214,62 @@ export default function Y2kHomePage() {
     }, [])
 
     // Load Spotify IFrame API and create the controller — module-level promise is StrictMode-safe
-    useEffect(() => {
-        let destroyed = false
-        loadSpotifyApi().then((IFrameAPI: unknown) => {
-            if (destroyed || !embedRef.current) return
-                ; (IFrameAPI as any).createController(
-                    embedRef.current,
-                    { uri: `spotify:track:${tracks[0].spotifyId}`, width: 300, height: 80 },
-                    (EmbedController: any) => {
-                        if (destroyed) return
-                        controllerRef.current = EmbedController
-                        EmbedController.addListener('playback_update', (e: any) => {
-                            if (destroyed) return
-                            const { position, isPaused } = e.data
-                            setElapsed(Math.floor(position / 1000))
-                            if (isPaused) {
-                                if (isPlayingRef.current) {
-                                    isPlayingRef.current = false
-                                    setIsPlaying(false)
-                                    if (vizFrameRef.current) cancelAnimationFrame(vizFrameRef.current)
-                                }
-                            } else {
-                                if (!isPlayingRef.current) {
-                                    isPlayingRef.current = true
-                                    setIsPlaying(true)
-                                    startViz()
-                                }
-                            }
-                        })
-                    }
-                )
-        })
-        return () => { destroyed = true; controllerRef.current = null }
-    }, [])
+    // useEffect(() => {
+    //     let destroyed = false
+    //     loadSpotifyApi().then((IFrameAPI: unknown) => {
+    //         if (destroyed || !embedRef.current) return
+    //             ; (IFrameAPI as any).createController(
+    //                 embedRef.current,
+    //                 { uri: `spotify:track:${tracks[0].spotifyId}`, width: 300, height: 80 },
+    //                 (EmbedController: any) => {
+    //                     if (destroyed) return
+    //                     controllerRef.current = EmbedController
+    //                     EmbedController.addListener('playback_update', (e: any) => {
+    //                         if (destroyed) return
+    //                         const { position, isPaused } = e.data
+    //                         setElapsed(Math.floor(position / 1000))
+    //                         if (isPaused) {
+    //                             if (isPlayingRef.current) {
+    //                                 isPlayingRef.current = false
+    //                                 setIsPlaying(false)
+    //                                 if (vizFrameRef.current) cancelAnimationFrame(vizFrameRef.current)
+    //                             }
+    //                         } else {
+    //                             if (!isPlayingRef.current) {
+    //                                 isPlayingRef.current = true
+    //                                 setIsPlaying(true)
+    //                                 startViz()
+    //                             }
+    //                         }
+    //                     })
+    //                 }
+    //             )
+    //     })
+    //     return () => { destroyed = true; controllerRef.current = null }
+    // }, [])
 
     const t = tracks[currentTrackIdx]
+
+    useEffect(() => {
+        const audio = audioRef.current;
+
+        const handleTimeUpdate = () => {
+            setElapsed(Math.floor(audio.currentTime));
+        };
+
+        const handleEnded = () => {
+            const nextIdx = (currentTrackIdxRef.current + 1) % tracks.length;
+            loadTrack(nextIdx);
+        };
+
+        audio.addEventListener('timeupdate', handleTimeUpdate); // 4
+        audio.addEventListener('ended', handleEnded);
+
+        return () => { // 5
+            audio.removeEventListener('timeupdate', handleTimeUpdate);
+            audio.removeEventListener('ended', handleEnded);
+        };
+    }, [])
 
     useEffect(() => {
         const sequence = [
@@ -405,8 +448,6 @@ export default function Y2kHomePage() {
                         </div>
                     </div>
 
-                    {/* Spotify IFrame API mount — off-screen so browser allows audio; visibility:hidden blocks audio in some browsers */}
-                    <div ref={embedRef} style={{ position: 'fixed', bottom: '-300px', left: 0, width: '300px', height: '80px', pointerEvents: 'none' }} />
 
                     <div className="np-playlist-header"><span className="np-playlist-label">▼ PLAYLIST</span></div>
                     <div className="np-playlist" id="playlist">
