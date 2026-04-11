@@ -5,7 +5,7 @@ import { createFileRoute } from '@tanstack/react-router'
 // import UglyHomePage from '../components/UglyHomePage'
 import Y2kHomePage from '../components/Y2kHomePage'
 // import { useDisplayMode } from '../hooks/useUglyMode'
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 export const Route = createFileRoute('/')({
     component: HomePage,
