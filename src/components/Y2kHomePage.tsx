@@ -51,7 +51,7 @@ const tabLabels: Record<TabKey, string> = {
 export default function Y2kHomePage() {
     const [activeTab, setActiveTab] = useState<TabKey>('about')
 
-    const audioRef = useRef<HTMLAudioElement | null>(new Audio(tracks[0].url))
+    const audioRef = useRef<HTMLAudioElement>(new Audio(tracks[0].url))
 
     const [searchQuery, setSearchQuery] = useState('')
     const [selectedBook, setSelectedBook] = useState<Book | null>(null);
@@ -70,9 +70,6 @@ export default function Y2kHomePage() {
     const vizFrameRef = useRef<number | null>(null)
     const barsRef = useRef<number[]>(Array(18).fill(0).map(() => Math.random()))
     const barTargetsRef = useRef<number[]>(Array(18).fill(0).map(() => Math.random()))
-    // Spotify IFrame API
-    const embedRef = useRef<HTMLDivElement>(null)
-    const controllerRef = useRef<any>(null)
     const isPlayingRef = useRef(false)
     const currentTrackIdxRef = useRef(0)
 
