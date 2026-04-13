@@ -15,7 +15,7 @@ type TabKey = 'about' | 'experience' | 'projects' | 'books'
 
 const tracks = [
     { title: "Ouroborus", artist: "Maiorca", duration: 200, color: ["#ff6600", "#ffcc00", "#ff3300"], url: "/track1.m4a" },
-    { title: "Cali Man", artist: "EsDeeKid", duration: 109, color: ["#8800ff", "#cc44ff", "#440088"], url: "/track2.m4a" },
+    { title: "You Might", artist: "g0nny ft. SHIRT", duration: 183, color: ["#8800ff", "#cc44ff", "#440088"], url: "/track2.m4a" },
     { title: "I Won't Cry Anymore", artist: "Marvin Gaye", duration: 173, color: ["#0055cc", "#44aaff", "#003399"], url: "/track3.m4a" },
     { title: "Paglaho", artist: "Midday Wednesday", duration: 282, color: ["#cc0033", "#ff4466", "#880022"], url: "/track4.m4a" },
     { title: "RIPCORD", artist: "greek", duration: 163, color: ["#006644", "#00cc88", "#003322"], url: "/track5.m4a" },
