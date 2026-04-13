@@ -334,9 +334,6 @@ export default function Y2kHomePage() {
                         <div className="cat-head"><div className="cat-ear-l"></div><div className="cat-ear-r"></div><div className="cat-eye-l"></div><div className="cat-eye-r"></div><div className="cat-nose"></div></div>
                         <div className="cat-body"><div className="cat-belly"></div><div className="cat-tail"></div></div>
                     </div>
-                    <div>
-                        <img src="chuu.png" className="bouncing-cat-dvd w-16 h-16" />
-                    </div>
                 </div>
                 <div className="banner-text-area">
                     <div className="banner-title">Hello! I'm Shianne!</div>
