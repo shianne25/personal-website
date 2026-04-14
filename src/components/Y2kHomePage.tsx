@@ -286,7 +286,7 @@ export default function Y2kHomePage() {
                 clearInterval(interval);
                 setTimeout(() => setIsLoading(false), 800); // Small delay for "logged in" feel
             }
-        }, 400); // Speed of the text lines
+        }, 300); // Speed of the text lines
 
         return () => clearInterval(interval);
     }, []);
@@ -467,7 +467,7 @@ export default function Y2kHomePage() {
                             </div>
                             <div className="content-box">
                                 <div className="content-box-inner">
-                                    <div className="content-body">Don't know much yet, but will soon!</div>
+                                    <div className="content-body">Hello, I'm Shianne! <br></br> I've got an interest in software development and project management. <br></br> Beyond my laptop, I like to dance, eat and watch the NBA. <br></br> I'm interested in technology, specifically in creating software development solutions. Though innovation is key, I still value the progress that got us here in the first place, hence the old Netscape design. Things should be fun! </div>
                                 </div>
                             </div>
                             <div className="notice-box">
@@ -532,7 +532,7 @@ export default function Y2kHomePage() {
             </div>
 
             <div className="footer">
-                <span className="footer-text">y2k mode ★ welcome page inspired by sampopark & old Netscape layouts</span>
+                <span className="footer-text"> personal website inspired by sampopark & old Netscape layouts</span>
                 <span className="footer-copyright">Built with React, TanStack, Spotify Embed</span>
             </div>
 
