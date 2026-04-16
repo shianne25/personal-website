@@ -1,5 +1,12 @@
 export const allBooks = [
     {
+        title: "Hard Boiled Wonderland and the End of the World",
+        author: "Haruki Murakami",
+        category: "early april 2026",
+        rating: 3,
+        commentary: "I used to really like Murakami actually, but that was also back in grade 8. I feel like my understanding of his world creation diminishes each time I pick up another book, but still, Murakami's writing still makes so much sense to read. It just is such an easy read, but I give credit of that to the translators for doing such a good job. This book was not as strange as Murakami usually is, like it was really tame compared to something like Kafka on the Shore. It's palletable and for once he doesn't make the grown man sleep with a child. At first nothing made sense, but this is one of the only times that the ending has actually made sense in a Murakami book for me. Anyways, I think I'll stop reading his books for a while, I think I'm at a total of almost 10?"
+    },
+    {
         title: "Madonna in a Fur Coat",
         author: "Sabahattin Ali",
         category: "mid mar. 2026",
