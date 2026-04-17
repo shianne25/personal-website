@@ -472,10 +472,10 @@ export default function Y2kHomePage() {
                                 </div>
                             </div>
                             <div className="notice-box">
-                                <div className="notice-body"> I know this one headshot of mine is on everything. <span style={{ color: 'blue' }}>I'll get a cooler headshot soon!!</span> </div>
+                                <div className="notice-header"><span className="notice-tag">NEW</span>April 16th</div>
+                                <div className="notice-body"> I know this one headshot of mine is on everything. <span style={{ color: 'blue' }}>I'll get a cooler headshot soon!!</span> <br></br> Also new book review up! It's about Murakami's Hard Boiled Wonderland and the End of the World. Interesting read fun to review. </div>
                             </div>
                             <div className="notice-box">
-                                <div className="notice-header"><span className="notice-tag">NEW</span>Going back to school soon!</div>
                                 <div className="notice-body">So excited for <span style={{ color: '#cc3300', fontWeight: 'bold' }}>SUMMERLOO</span>. Hehehehe</div>
                             </div>
                         </div>
