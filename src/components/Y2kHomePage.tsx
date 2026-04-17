@@ -331,8 +331,9 @@ export default function Y2kHomePage() {
                     <div className="tree" style={{ left: '260px', bottom: '28px' }}><div className="tree-top2"></div><div className="tree-top"></div><div className="tree-trunk"></div></div>
                     <div className="church"><div className="church-steeple"></div><div className="church-roof"></div><div className="church-body"></div></div>
                     <div className="cat-char bouncing-cat-dvd">
-                        <div className="cat-head"><div className="cat-ear-l"></div><div className="cat-ear-r"></div><div className="cat-eye-l"></div><div className="cat-eye-r"></div><div className="cat-nose"></div></div>
-                        <div className="cat-body"><div className="cat-belly"></div><div className="cat-tail"></div></div>
+                        <img src={"shianne.jpg"} alt="shianne" style={{ width: '100%', height: '85%' }} />
+                        {/* <div className="cat-head"><div className="cat-ear-l"></div><div className="cat-ear-r"></div><div className="cat-eye-l"></div><div className="cat-eye-r"></div><div className="cat-nose"></div></div>
+                        <div className="cat-body"><div className="cat-belly"></div><div className="cat-tail"></div></div> */}
                     </div>
                 </div>
                 <div className="banner-text-area">
@@ -469,6 +470,9 @@ export default function Y2kHomePage() {
                                 <div className="content-box-inner">
                                     <div className="content-body">Hello, I'm Shianne! <br></br> I've got an interest in software development and project management. <br></br> Beyond my laptop, I like to dance, eat and watch the NBA. <br></br> I'm interested in technology, specifically in creating software development solutions. Though innovation is key, I still value the progress that got us here in the first place, hence the old Netscape design. Things should be fun! </div>
                                 </div>
+                            </div>
+                            <div className="notice-box">
+                                <div className="notice-body"> I know this one headshot of mine is on everything. <span style={{ color: 'blue' }}>I'll get a cooler headshot soon!!</span> </div>
                             </div>
                             <div className="notice-box">
                                 <div className="notice-header"><span className="notice-tag">NEW</span>Going back to school soon!</div>
