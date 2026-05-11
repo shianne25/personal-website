@@ -1,5 +1,12 @@
 export const allBooks = [
     {
+        title: "Just Kids",
+        author: "Patti Smith",
+        category: "late april - early may 2026",
+        rating: 4,
+        commentary: "Very well told story about life itself. It didn't feel like a romantacization of Robert and his character but simply a retelling of the life he lived. I've never been too interested in art, but the culture is truly one to praise. Seriously well written slice of life and I've heard people complain about its pace but I think you need to think about the purpose of this book. It's not supposed to take the reader on some crazy journey, it's really just about settling into the details of someone's life. You can't speed up or slow down the way someone lived and I think the way Smith chose to pace her storytelling is to be appreciated. Slow read, but I think it's worth it."
+    },
+    {
         title: "Hard Boiled Wonderland and the End of the World",
         author: "Haruki Murakami",
         category: "early april 2026",
