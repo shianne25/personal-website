@@ -3,6 +3,22 @@ import '../styles/ugly-mode.css'
 import { allBooks } from '../book-reviews/bookReviews' // Ensure this path is correct
 import BookCard from './Book';
 
+export const Typewriter = ({ text, speed = 100 }: { text: string; speed?: number }) => {
+    const [displayText, setDisplayText] = useState('');
+
+    useEffect(() => {
+        let i = 0;
+        const timer = setInterval(() => {
+            setDisplayText(text.substring(0, i + 1));
+            i++;
+            if (i >= text.length) clearInterval(timer);
+        }, speed);
+
+        return () => clearInterval(timer);
+    }, [text, speed]);
+
+    return <span>{displayText}</span>;
+};
 export interface Book {
     title: string;
     author: string;
@@ -337,7 +353,9 @@ export default function Y2kHomePage() {
                     </div>
                 </div>
                 <div className="banner-text-area">
-                    <div className="banner-title">Hello! I'm Shianne!</div>
+                    <div className="banner-title">
+                        <Typewriter text="Hello! I'm Shianne!" speed={75} />
+                    </div>
                     <div className="flex flex-row gap-4 justify-center md:justify-start py-2">
                         {/* <div className="banner-title flex flex-row gap-4 justify-left items-center py-2"> */}
                         {/* LinkedIn - Matching Industrial Grey */}
