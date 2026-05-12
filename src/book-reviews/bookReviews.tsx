@@ -39,7 +39,7 @@ export const allBooks = [
         author: "Jack Weatherford",
         category: "late jan. - early feb. 2026",
         rating: 3,
-        commentary: "Intensely fascinating to learn about the origins of Genghis Khan's empire and his rise to power. His guiding principles were really WOKE, for a lack of better wording. Unfortunately, the book fell a little flat because it felt too much like an apologist's recap. If someone just picked up this book with no knowledge of the brutality and atrocities of the Mongol Empire, the empire would genuinely seem like heaven on Earth. Regines and rulees were told to be very reasonable with global intellectualism and freedom f religion praised. Like, yes I'd buy into that fully. But that wasn't the entire story of it. Still, the book does a good job at humanizing the Mongols who've been painted as such barbarians that they lose their humanity. Maybe I just hate non-fiction."
+        commentary: "Intensely fascinating to learn about the origins of Genghis Khan's empire and his rise to power. His guiding principles were really WOKE, for a lack of better wording. Unfortunately, the book fell a little flat because it felt too much like an apologist's recap. If someone just picked up this book with no knowledge of the brutality and atrocities of the Mongol Empire, the empire would genuinely seem like heaven on Earth. Regimes and rules were told to be very reasonable with global intellectualism and freedom of religion praised. Like, yes I'd buy into that fully. But that wasn't the entire story of it. Still, the book does a good job at humanizing the Mongols who've been painted as such barbarians that they lose their humanity. Maybe I just hate non-fiction."
     },
     {
         title: "Big Swiss",
