@@ -1064,4 +1064,22 @@
     .banner-sub-title {
         font-size: 11px !important;
     }
+
+    /* target the class used for your project cards */
+    .project-card {
+        display: block;
+        position: relative;
+        /* This ensures it scales from the center */
+        transform: scale(1);
+        will-change: transform;
+    }
+
+    /* The zoom effect */
+    .project-card:hover {
+        /* 1.05 = 5% zoom */
+        transform: scale(1.05) !important;
+        z-index: 10;
+        border-color: #f472b6;
+        /* Optional: pink-400 border on hover */
+    }
 }

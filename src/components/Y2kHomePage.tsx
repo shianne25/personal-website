@@ -3,22 +3,30 @@ import '../styles/ugly-mode.css'
 import { allBooks } from '../book-reviews/bookReviews' // Ensure this path is correct
 import BookCard from './Book';
 
-export const Typewriter = ({ text, speed = 100 }: { text: string; speed?: number }) => {
+export const Typewriter = ({ text, speed = 100, onComplete }: { text: string; speed?: number; onComplete?: () => void }) => {
     const [displayText, setDisplayText] = useState('');
+    const [isDone, setIsDone] = useState(false);
 
     useEffect(() => {
-        let i = 0;
-        const timer = setInterval(() => {
-            setDisplayText(text.substring(0, i + 1));
-            i++;
-            if (i >= text.length) clearInterval(timer);
+        // If we've reached the end, stop everything
+        if (displayText.length >= text.length) {
+            if (!isDone) {
+                setIsDone(true);
+                onComplete?.();
+            }
+            return;
+        }
+
+        const timer = setTimeout(() => {
+            setDisplayText(text.substring(0, displayText.length + 1));
         }, speed);
 
-        return () => clearInterval(timer);
-    }, [text, speed]);
+        return () => clearTimeout(timer);
+    }, [displayText, text, speed, onComplete, isDone]);
 
     return <span>{displayText}</span>;
 };
+
 export interface Book {
     title: string;
     author: string;
@@ -66,6 +74,12 @@ const tabLabels: Record<TabKey, string> = {
 
 export default function Y2kHomePage() {
     const [activeTab, setActiveTab] = useState<TabKey>('about')
+
+    // ... existing state ...
+    const [typingStage, setTypingStage] = useState(0);
+    // Helper to move to next line
+    const nextStage = () => setTypingStage(prev => prev + 1);
+    const [lineIndex, setLineIndex] = useState(0);
 
     const audioRef = useRef<HTMLAudioElement>(new Audio(tracks[0].url))
 
@@ -354,7 +368,11 @@ export default function Y2kHomePage() {
                 </div>
                 <div className="banner-text-area">
                     <div className="banner-title">
-                        <Typewriter text="Hello! I'm Shianne!" speed={75} />
+                        <Typewriter
+                            text="Hello! I'm Shianne!"
+                            speed={75}
+                            onComplete={() => setLineIndex(1)}
+                        />
                     </div>
                     <div className="flex flex-row gap-4 justify-center md:justify-start py-2">
                         {/* <div className="banner-title flex flex-row gap-4 justify-left items-center py-2"> */}
@@ -402,7 +420,39 @@ export default function Y2kHomePage() {
                             </svg>
                         </a>
                     </div>
-                    <div className="banner-sub-title">syde @ uwaterloo <br></br> tpm + fullstack dev @ needlist.org <br></br> kewpie mayo enthusiast</div>
+                    <div className="banner-sub-title">
+                        {/* Line 1: Waterloo */}
+                        {lineIndex >= 1 && (
+                            <div>
+                                <Typewriter
+                                    text="syde @ uwaterloo"
+                                    speed={30}
+                                    onComplete={() => setLineIndex(2)}
+                                />
+                            </div>
+                        )}
+
+                        {/* Line 2: Needlist */}
+                        {lineIndex >= 2 && (
+                            <div>
+                                <Typewriter
+                                    text="tpm + fullstack dev @ needlist.org"
+                                    speed={30}
+                                    onComplete={() => setLineIndex(3)}
+                                />
+                            </div>
+                        )}
+
+                        {/* Line 3: Mayo */}
+                        {lineIndex >= 3 && (
+                            <div>
+                                <Typewriter
+                                    text="kewpie mayo enthusiast"
+                                    speed={30}
+                                />
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
 
