@@ -75,10 +75,6 @@ const tabLabels: Record<TabKey, string> = {
 export default function Y2kHomePage() {
     const [activeTab, setActiveTab] = useState<TabKey>('about')
 
-    // ... existing state ...
-    const [typingStage, setTypingStage] = useState(0);
-    // Helper to move to next line
-    const nextStage = () => setTypingStage(prev => prev + 1);
     const [lineIndex, setLineIndex] = useState(0);
 
     const audioRef = useRef<HTMLAudioElement>(new Audio(tracks[0].url))
