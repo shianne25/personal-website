@@ -428,11 +428,11 @@ export default function Y2kHomePage() {
                             </div>
                         )}
 
-                        {/* Line 2: Needlist */}
+                        {/* Line 2: current job */}
                         {lineIndex >= 2 && (
                             <div>
                                 <Typewriter
-                                    text="tpm + fullstack dev @ needlist.org"
+                                    text="software developer @ ford"
                                     speed={30}
                                     onComplete={() => setLineIndex(3)}
                                 />
@@ -536,7 +536,11 @@ export default function Y2kHomePage() {
                                 </div>
                             </div>
                             <div className="notice-box">
-                                <div className="notice-header"><span className="notice-tag">NEW</span>May 22nd</div>
+                                <div className="notice-header"><span className="notice-tag">NEW</span>Sept 3rd</div>
+                                <div className="notice-body"> Recently finished my 1B term at Waterloo! Challenging in ways I wasn't expecting, but still very rewarding. <br></br> Looking forward to starting my new work term and having more time to work on some cool things.</div>
+                            </div>
+                            <div className="notice-box">
+                                <div className="notice-header">May 22nd</div>
                                 <div className="notice-body"> TWK coming soon!!! </div>
                             </div>
                             <div className="notice-box">
@@ -552,7 +556,8 @@ export default function Y2kHomePage() {
                         <div>
                             <div className="section-header"><div className="section-header-dot"></div><span className="section-header-text">Experience Timeline</span><span className="section-header-jp">Work</span></div>
                             <div className="content-box"><div className="content-title">Work History</div><div className="grid-cards">
-                                <Card title="NeedList.ORG" subtitle="Technical Project Manager (2026-now)" details="building good things!" />
+                                <Card title="Ford Motor Company" subtitle="Software Developer (current)" details="projection and the sort" />
+                                <Card title="NeedList.ORG" subtitle="Technical Project Manager (Jan - April 2026)" details="building good things!" />
                                 <Card title="Spirit of Math" subtitle="Assistant Teacher (2021-2025)" details="we love math!" />
                                 <Card title="Home" subtitle="Sigma Builder (birth-2021)" details="worked to be where I am today" /></div></div>
                         </div>
@@ -571,7 +576,7 @@ export default function Y2kHomePage() {
                         <div className="animate-in fade-in duration-300">
                             <div className="section-header">
                                 <div className="section-header-dot"></div>
-                                <span className="section-header-text">Book & Learning Corner</span>
+                                <span className="section-header-text">Current Read: The Invention of Morel</span>
                             </div>
 
                             {/* Y2K Search Bar */}

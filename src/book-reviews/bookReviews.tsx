@@ -1,5 +1,12 @@
 export const allBooks = [
     {
+        title: "Lesser Known Monsters of the 21st Century",
+        author: "Kim Fu",
+        category: "1b study term 2026",
+        rating: 3,
+        commentary: "School really just wipes out any motivation for me to read. I want to get better at balancing my hobbies with studying as study terms go one. Anyways, this was a nice collection of short stories that I picked up whenever I had time and it was easy to read since each story was self contained. However, because of that short stories are usually hard for me to really grasp because there's little time to digest what's going on. It always makes me feel like I need to read deeply between the lines because there's so few of them to begin with. Regardless, these stories were fun enough to keep me entertained, but I wish I was able to reflect deeper on them."
+    },
+    {
         title: "Just Kids",
         author: "Patti Smith",
         category: "late april - early may 2026",
