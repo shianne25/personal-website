@@ -1,5 +1,12 @@
 export const allBooks = [
     {
+        title: "The Invention of Morel",
+        author: "Adolfo Bioy Casares",
+        category: "sept 2026",
+        rating: 2,
+        commentary: "This book was a bit of a dissapointment for me. It could've just been a bad copy on my end (formatting in my version was very off and I wasn't able to see many of the in-book pictures), but overall the story was very lackluster to me. Plot is extremely important to me and with this book, it just didn't hit the mark."
+    },
+    {
         title: "Lesser Known Monsters of the 21st Century",
         author: "Kim Fu",
         category: "1b study term 2026",
