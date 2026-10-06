@@ -536,7 +536,11 @@ export default function Y2kHomePage() {
                                 </div>
                             </div>
                             <div className="notice-box">
-                                <div className="notice-header"><span className="notice-tag">NEW</span>Sept 3rd</div>
+                                <div className="notice-header"><span className="notice-tag">NEW</span>Oct 5th</div>
+                                <div className="notice-body"> New term, lots of dance! <br></br> Working on a new project on a topic that I'm quite passionate about.</div>
+                            </div>
+                            <div className="notice-box">
+                                <div className="notice-header">Sept 3rd</div>
                                 <div className="notice-body"> Recently finished my 1B term at Waterloo! Challenging in ways I wasn't expecting, but still very rewarding. <br></br> Looking forward to starting my new work term and having more time to work on some cool things.</div>
                             </div>
                             <div className="notice-box">
@@ -566,7 +570,8 @@ export default function Y2kHomePage() {
                         <div>
                             <div className="section-header"><div className="section-header-dot"></div><span className="section-header-text">Featured Projects</span><span className="section-header-jp">Things I've made!</span></div>
                             <div className="content-box"><div className="content-title">Featured Projects</div><div className="grid-cards">
-                                <ProjectCard title="twk (Those Who Know)" subtitle="OUT NOW" details="Autocorrect for slang, turning formal English into conversations instantly. Built in Python with pynput, PyQt6, SQLite, Ollama/llama3.2, pyperclip, psutil, and pywin32" image="TWK.png" link="https://github.com/shianne25/twk/releases/tag/v1.0.0" />
+                                <ProjectCard title="What Are The Odds?" subtitle="BUILDING" details="anti-sportsbetting" link="https://github.com/shianne25/what-are-the-odds" />
+                                <ProjectCard title="twk (Those Who Know)" subtitle="new autocorrect" details="Autocorrect for slang, turning formal English into conversations instantly. Built in Python with pynput, PyQt6, SQLite, Ollama/llama3.2, pyperclip, psutil, and pywin32" image="TWK.png" link="https://github.com/shianne25/twk/releases/tag/v1.0.0" />
                                 <ProjectCard title="GeekSafe" subtitle="contactless health" details="A mobile app that uses contactless scanning (Presage) and Gemini 2.0 Flash to monitor vitals and assess substance-related risks. Built on a React Native frontend and FastAPI backend to deliver real-time, AI-driven health guidance without the need for wearables." image="/image0.jpeg" link="https://devpost.com/software/geeksafe" />
                                 <ProjectCard title="Our Next Move" subtitle="community dance workshop" details="Dance workshop connecting vulnerable youth to community resources such as 360Kids, CICS, and Routes Newmarket." image="onm.png" link="https://www.instagram.com/ournextmove2025?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" />
                                 <ProjectCard title="Exploding Kittens Digital" subtitle="game build" details="A digital adaptation of the popular card game, developed using Java and GUI frameworks." image="kittens.avif" link="https://github.com/shianne25/Exploding-Kittens-Project" /></div></div>
